@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://bx32ajfxay87n"]
+
+[ext_resource type="Script" uid="uid://1vo8v06c7y7c" path="res://fog_of_war.gd" id="1_e0an3"]
+[ext_resource type="Texture2D" uid="uid://qmjwds2wiqtd" path="res://fogofwar.png" id="2_e0an3"]
+[ext_resource type="Texture2D" uid="uid://epnrqv0m70v1" path="res://tiles1.png" id="2_wijl4"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wijl4"]
+texture = ExtResource("2_wijl4")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:1/0 = 0
+3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSet" id="TileSet_p5pve"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_wijl4")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p5pve"]
+texture = ExtResource("2_e0an3")
+0:0/0 = 0
+1:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_urblq"]
+sources/0 = SubResource("TileSetAtlasSource_p5pve")
+
+[node name="Map" type="Node2D" unique_id=295214976 node_paths=PackedStringArray("tilemapLayer", "fogOFWar")]
+script = ExtResource("1_e0an3")
+tilemapLayer = NodePath("map")
+fogOFWar = NodePath("fog of war")
+
+[node name="map" type="TileMapLayer" parent="." unique_id=1815005644]
+tile_set = SubResource("TileSet_p5pve")
+
+[node name="fog of war" type="TileMapLayer" parent="." unique_id=1373980217]
+tile_set = SubResource("TileSet_urblq")
