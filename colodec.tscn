@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://ma1q7an3jhrl"]
+
+[ext_resource type="Texture2D" uid="uid://idrju32vjiqg" path="res://colodec.png" id="1_mo1nu"]
+
+[node name="colodec" type="Node2D" unique_id=1942250933]
+
+[node name="Colodec" type="Sprite2D" parent="." unique_id=488378455]
+texture = ExtResource("1_mo1nu")

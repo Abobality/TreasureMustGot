@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://y7e78tkln5"]
+
+[ext_resource type="Texture2D" uid="uid://dbr4egtd3fxip" path="res://worm_segment.png" id="1_6thxi"]
+
+[node name="Segment" type="Sprite2D" unique_id=356474807]
+rotation = 3.1415927
+texture = ExtResource("1_6thxi")

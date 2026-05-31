@@ -11,10 +11,14 @@ config_version=5
 [application]
 
 config/name="Moscow jam"
-run/main_scene="uid://bx32ajfxay87n"
+run/main_scene="uid://cyx2osy1cmren"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 boot_splash/show_image=false
 config/icon="res://icon.svg"
+
+[autoload]
+
+Dungeons="*uid://djiqsv8cgbyn4"
 
 [display]
 
@@ -22,6 +26,10 @@ window/size/viewport_width=720
 window/size/viewport_height=480
 window/size/mode=3
 window/stretch/mode="viewport"
+
+[global_group]
+
+Enemy=""
 
 [input]
 

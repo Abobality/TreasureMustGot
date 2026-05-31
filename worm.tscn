@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://dwbso06we3ha8"]
+
+[ext_resource type="Script" uid="uid://bu3u2kif36qx7" path="res://worm_ai.gd" id="1_14tpb"]
+[ext_resource type="Texture2D" uid="uid://dj56bdhfy6vpj" path="res://worm_head.png" id="1_rdq8q"]
+[ext_resource type="PackedScene" uid="uid://y7e78tkln5" path="res://segment.tscn" id="2_affe2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_14tpb"]
+radius = 8.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_affe2"]
+radius = 0.0
+
+[node name="Worm" type="CharacterBody2D" unique_id=1440836534]
+collision_layer = 2
+collision_mask = 2
+motion_mode = 1
+script = ExtResource("1_14tpb")
+segment_scene = ExtResource("2_affe2")
+num_segments = 6
+distance_between = 300.0
+max_health = 1
+
+[node name="Head" type="Area2D" parent="." unique_id=490357527]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Head" unique_id=1514638263]
+shape = SubResource("CircleShape2D_14tpb")
+
+[node name="WormHead" type="Sprite2D" parent="Head" unique_id=1427420263]
+rotation = -3.1415927
+texture = ExtResource("1_rdq8q")
+
+[node name="Segments" type="Node2D" parent="." unique_id=1267137365]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1691381936]
+shape = SubResource("CircleShape2D_affe2")
+
+[connection signal="body_entered" from="Head" to="." method="_on_head_body_entered"]

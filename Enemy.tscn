@@ -1,0 +1,79 @@
+[gd_scene format=3 uid="uid://dt0xk0yy7aged"]
+
+[ext_resource type="Script" uid="uid://lpcn7iide6kn" path="res://enemy_move.gd" id="1_s7bn3"]
+[ext_resource type="Texture2D" uid="uid://cmd4fi8fgmmd1" path="res://icon.svg" id="1_tt7e2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tt7e2"]
+size = Vector2(5, 5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s7bn3"]
+size = Vector2(8, 8)
+
+[sub_resource type="Animation" id="Animation_s7bn3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Icon:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_2hac7"]
+resource_name = "attack"
+length = 0.36666667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Area2D/CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.03333333, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Icon:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.33333334),
+"transitions": PackedFloat32Array(1, 5.2780313),
+"update": 0,
+"values": [0.0, 6.283185307179586]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2hac7"]
+_data = {
+&"RESET": SubResource("Animation_s7bn3"),
+&"attack": SubResource("Animation_2hac7")
+}
+
+[node name="enemy" type="CharacterBody2D" unique_id=548660673 groups=["Enemy"]]
+script = ExtResource("1_s7bn3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=468412085]
+shape = SubResource("RectangleShape2D_tt7e2")
+
+[node name="Icon" type="Sprite2D" parent="." unique_id=2060291623]
+scale = Vector2(0.0625, 0.0625)
+texture = ExtResource("1_tt7e2")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=987401544]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=926276777]
+shape = SubResource("RectangleShape2D_s7bn3")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=122167885]
+libraries/ = SubResource("AnimationLibrary_2hac7")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

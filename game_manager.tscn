@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://cyx2osy1cmren"]
+
+[ext_resource type="PackedScene" uid="uid://bx32ajfxay87n" path="res://map.tscn" id="1_smx3j"]
+[ext_resource type="PackedScene" uid="uid://ckucc0bt2x3yj" path="res://HUD.tscn" id="2_o2178"]
+
+[node name="GameManager" type="Node2D" unique_id=1571989012]
+
+[node name="GameWorld" type="Node2D" parent="." unique_id=1148703150]
+
+[node name="Map" parent="GameWorld" unique_id=295214976 instance=ExtResource("1_smx3j")]
+
+[node name="HUD" parent="." unique_id=1917596021 instance=ExtResource("2_o2178")]
