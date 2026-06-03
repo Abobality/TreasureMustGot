@@ -16,7 +16,7 @@ func _on_body_entered(body: Node2D) -> void:
 		var tilemap_layer = body
 		var check_pos = global_position + direction * 8.0 
 		var grid_pos = tilemap_layer.local_to_map(tilemap_layer.to_local(check_pos))
-		var map_node = get_node_or_null("/root/Map") 
+		var map_node = get_node_or_null("/root/GameManager/GameWorld/Map") 
 		
 		if map_node and map_node.has_method("destroy_block"):
 			map_node.destroy_block(grid_pos.x, grid_pos.y)

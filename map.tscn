@@ -4,7 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://qmjwds2wiqtd" path="res://fogofwar.png" id="2_e0an3"]
 [ext_resource type="Texture2D" uid="uid://epnrqv0m70v1" path="res://tiles1.png" id="2_wijl4"]
 [ext_resource type="PackedScene" uid="uid://dk82vmxmhttkr" path="res://player.tscn" id="4_p5pve"]
-[ext_resource type="PackedScene" uid="uid://bkyjgx7h5h1ix" path="res://bur.tscn" id="6_iw27f"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wijl4"]
 texture = ExtResource("2_wijl4")
@@ -44,13 +43,9 @@ fogOFWar = NodePath("fog of war")
 tile_set = SubResource("TileSet_p5pve")
 
 [node name="fog of war" type="TileMapLayer" parent="." unique_id=1373980217]
-visible = false
 z_index = 10
 tile_set = SubResource("TileSet_urblq")
 
 [node name="player" parent="." unique_id=192272669 instance=ExtResource("4_p5pve")]
-position = Vector2(-8, 504)
-max_health = 50
-
-[node name="CharacterBody2D" parent="." unique_id=1334817698 instance=ExtResource("6_iw27f")]
 position = Vector2(8, 504)
+max_health = 50

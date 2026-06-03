@@ -19,5 +19,6 @@ shape = SubResource("RectangleShape2D_onrkg")
 texture = ExtResource("2_onrkg")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1926114942]
+position = Vector2(32, 0)
 zoom = Vector2(3.74, 3.74)
 position_smoothing_enabled = true

@@ -51,7 +51,7 @@ func _ready():
 	reveal_fog_around(width-1,0)
 	reveal_fog_around(0,height-1)
 	update_navigation_grid()
-
+	_generate_borders()
 
 		
 
@@ -134,11 +134,10 @@ func _spawnActivity(packedScene: PackedScene,x,y,chance):
 		return
 		
 	if random <= chance:
-		map_2d[x][y] = 0
 		var activity = packedScene.instantiate()
 		if activity.is_in_group("Enemy"):
 			activity.player = $player
-			activity.map_node = $/root/Map
+			activity.map_node = $/root/GameManager/GameWorld/Map
 		add_child(activity)
 		activity.global_position = Vector2(x*16+8,y*16+8)
 
@@ -239,3 +238,14 @@ func spawn_bullet(start_pos: Vector2, dir: Vector2, bullet_creator: Node2D) -> v
 	bullet.set_physics_process(true)
 	bullet.set_deferred("monitoring", true)
 	bullet.set_deferred("monitorable", true)
+
+func _generate_borders(thickness: int = 15) -> void:
+	for x in range(-thickness, width + thickness):
+		for y in range(-thickness, height + thickness):
+			
+			if x < 0 or x >= width or y < 0 or y >= height:
+				
+				tilemapLayer.set_cell(Vector2i(x, y), 0, Vector2i(2, 0))
+				
+				if fogOFWar:
+					fogOFWar.set_cell(Vector2i(x, y), 0, Vector2i(0, 0))
